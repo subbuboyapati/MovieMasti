@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Movie Masti</string>
+
+    <string name="movie_name" translatable="false">Movie name</string>
+    <string name="action_setting">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string-array name="pref_sort_by_titles">
+        <item>Popularity</item>
+        <item>Top rated</item>
+    </string-array>
+    <string-array name="pref_sort_by_values">
+        <item>popularity.desc</item>
+        <item>vote_average.desc</item>
+    </string-array>
+
+    <string name="pref_sort_by">Sort by</string>
+    <string name="pref_sort_by_default">popularity.desc</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="movie_release_date">2015-06-13</string>
+    <string name="movie_overview">Description of a movie with all detials like title, Release date</string>
+
+    <string name="action_popularity">Popularity</string>
+    <string name="action_top_rated">Top Rated</string>
+    <string name="pref">pref</string>
+</resources>
