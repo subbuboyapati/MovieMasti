@@ -2,6 +2,7 @@
     <string name="app_name">Movie Masti</string>
 
     <string name="movie_name" translatable="false">Movie name</string>
+    <string name="no_movie_selected">No movie selected. Select a movie</string>
     <string name="action_setting">Settings</string>
     <string name="title_activity_settings">Settings</string>
 
@@ -12,6 +13,7 @@
     <string-array name="pref_sort_by_values">
         <item>popularity.desc</item>
         <item>vote_average.desc</item>
+        <item>Favorites</item>
     </string-array>
 
     <string name="pref_sort_by">Sort by</string>
@@ -23,4 +25,11 @@
     <string name="action_popularity">Popularity</string>
     <string name="action_top_rated">Top Rated</string>
     <string name="pref">pref</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favorite">Favorites</string>
+    <string name="share_image">Share Icon</string>
+    <string name="no_trailers">No trailers available for this movie.</string>
+    <string name="movie_trailer">Movie trailer</string>
 </resources>

@@ -34,6 +34,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.subbu.moviemasti.activity.DiscoveryActivity" />
         </activity>
+
+        <provider
+            android:name=".data.MovieProvider"
+            android:authorities="com.subbu.moviemasti" />
     </application>
 
 </manifest>

@@ -7,3 +7,8 @@
 /build
 /captures
 ./idea
+.idea/.name
+.idea/copyright/profiles_settings.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/runConfigurations.xml

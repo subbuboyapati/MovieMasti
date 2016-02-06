@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#017088</color>
+    <color name="colorPrimaryDark">#330101</color>
+    <color name="colorAccent">#017088</color>
     <color name="grid_item_text_bg">#901540ec</color>
     <color name="grid_bg">#7800ff77</color>
+    <color name="movie_title_bg">#efebe9</color>
 </resources>

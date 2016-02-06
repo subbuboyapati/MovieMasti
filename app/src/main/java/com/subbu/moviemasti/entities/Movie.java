@@ -9,6 +9,17 @@ import com.google.gson.annotations.SerializedName;
  * Created by subrahmanyam on 25-11-2015.
  */
 public class Movie implements Parcelable {
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
     @SerializedName("backdrop_path")
     private String backdropPath;
     private int id;
@@ -25,6 +36,25 @@ public class Movie implements Parcelable {
     private String overview;
     @SerializedName("original_title")
     private String originalTitle;
+
+    public Movie(int id, String movieTitle, String poster) {
+        this.id = id;
+        title = movieTitle;
+        posterPath = poster;
+    }
+
+    public Movie(Parcel in) {
+        backdropPath = in.readString();
+        id = in.readInt();
+        title = in.readString();
+        popularity = in.readString();
+        voteAverage = in.readString();
+        voteCount = in.readInt();
+        posterPath = in.readString();
+        releaseDate = in.readString();
+        overview = in.readString();
+        originalTitle = in.readString();
+    }
 
     public String getBackdropPath() {
         return backdropPath;
@@ -122,19 +152,6 @@ public class Movie implements Parcelable {
                 '}';
     }
 
-    protected Movie(Parcel in) {
-        backdropPath = in.readString();
-        id = in.readInt();
-        title = in.readString();
-        popularity = in.readString();
-        voteAverage = in.readString();
-        voteCount = in.readInt();
-        posterPath = in.readString();
-        releaseDate = in.readString();
-        overview = in.readString();
-        originalTitle = in.readString();
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -153,16 +170,4 @@ public class Movie implements Parcelable {
         dest.writeString(overview);
         dest.writeString(originalTitle);
     }
-
-    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
-        @Override
-        public Movie createFromParcel(Parcel in) {
-            return new Movie(in);
-        }
-
-        @Override
-        public Movie[] newArray(int size) {
-            return new Movie[size];
-        }
-    };
 }

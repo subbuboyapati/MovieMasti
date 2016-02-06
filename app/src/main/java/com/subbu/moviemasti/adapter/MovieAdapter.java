@@ -1,9 +1,9 @@
 package com.subbu.moviemasti.adapter;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -19,22 +19,32 @@ import butterknife.ButterKnife;
 /**
  * Created by subrahmanyam on 25-11-2015.
  */
-public class MovieAdapter extends BaseAdapter {
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
     private final List<Movie> movieList;
+    private onRecyclerViewItemClickListener mItemClickListener;
 
     public MovieAdapter(List<Movie> movieList) {
         this.movieList = movieList;
     }
 
     @Override
-    public int getCount() {
-        return movieList.size();
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.grid_item, null);
+        ViewHolder holder = new ViewHolder(view);
+        return holder;
     }
 
     @Override
-    public Object getItem(int position) {
-        return movieList.get(position);
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        final Movie movie = movieList.get(position);
+        String imageUrl = Constants.MOVIE_POSTER_BASE_URL + movie.getPosterPath();
+        if (imageUrl != null) {
+            Picasso.with(holder.posterImage.getContext()).load(imageUrl).
+                    placeholder(R.drawable.img_default).
+                    into(holder.posterImage);
+        }
     }
 
     @Override
@@ -43,29 +53,32 @@ public class MovieAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final ViewHolder viewHolder;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item, parent, false);
-            viewHolder = new ViewHolder(convertView);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-        final Movie movie = (Movie) getItem(position);
-        String imageUrl = Constants.MOVIE_POSTER_BASE_URL + movie.getPosterPath();
-        Picasso.with(parent.getContext()).load(imageUrl).
-                placeholder(R.drawable.img_default).
-                into(viewHolder.posterImage);
-        return convertView;
+    public int getItemCount() {
+        return movieList.size();
     }
 
-    public class ViewHolder {
+    public void setOnItemClickListener(onRecyclerViewItemClickListener mItemClickListener) {
+        this.mItemClickListener = mItemClickListener;
+    }
+
+    public interface onRecyclerViewItemClickListener {
+        void onItemClickListener(View view, int position);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.poster)
         ImageView posterImage;
 
         public ViewHolder(View view) {
+            super(view);
             ButterKnife.bind(this, view);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            mItemClickListener.onItemClickListener(v, getAdapterPosition());
         }
     }
+
 }

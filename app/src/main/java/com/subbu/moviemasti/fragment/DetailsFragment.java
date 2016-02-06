@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetailsFragment extends Fragment {
+public class DetailsFragment extends Fragment implements IDetailsFragment {
 
     private static final String LOG = DetailsFragment.class.getSimpleName();
     @Bind(R.id.movie_release_date)
@@ -38,12 +38,14 @@ public class DetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_details, container, false);
         ButterKnife.bind(this, view);
         Bundle bundle = getArguments();
-        Movie movie = bundle.getParcelable(Constants.MOVIE);
-        if (movie != null) {
-            movieReleaseDate.setText(movie.getReleaseDate());
-            movieDescription.setText(movie.getOverview());
-            movieTitle.setText(movie.getOriginalTitle());
-            movieRating.setText(movie.getVoteAverage());
+        if (bundle != null) {
+            Movie movie = bundle.getParcelable(Constants.MOVIE);
+            if (movie != null) {
+                movieReleaseDate.setText(movie.getReleaseDate());
+                movieDescription.setText(movie.getOverview());
+                movieTitle.setText(movie.getOriginalTitle());
+                movieRating.setText(movie.getVoteAverage());
+            }
         }
         return view;
     }

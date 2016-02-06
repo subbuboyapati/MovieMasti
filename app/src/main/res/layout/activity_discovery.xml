@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.subbu.moviemasti.activity.DiscoveryActivity">
 
-    <FrameLayout
-        android:id="@+id/container"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/discovery_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <fragment
+        android:id="@+id/container"
+        android:name="com.subbu.moviemasti.fragment.DiscoveryFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/discovery_toolbar"
+        tools:context="com.subbu.moviemasti.fragment.DiscoveryFragment"
+        tools:layout="@layout/fragment_discovery" />
 </RelativeLayout>
